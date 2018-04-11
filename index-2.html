@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="todoApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="js/todo.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+    <link rel="stylesheet/less" type="text/css" href="css/styles.less" />
+    <script>
+      less = {
+        async: true
+      };
+    </script>
+    <script src="js/less.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+     <h1>Add Some Control - Todo List</h1>
+     <hr>
+     <div ng-controller="TodoListController as todoList">
+       <p>{{todoList.remaining()}} of {{todoList.todos.length}} remaining [ <a href="" ng-click="todoList.archive()">archive</a> ]</p>
+
+       <ul class="unstyled">
+         <li ng-repeat="todo in todoList.todos">
+           <label class="checkbox">
+             <input type="checkbox" ng-model="todo.done">
+             <span class="done-{{todo.done}}">{{todo.text}}</span>
+           </label>
+         </li>
+       </ul>
+       <form ng-submit="todoList.addTodo()">
+         <input type="text" ng-model="todoList.todoText"  size="30"
+                placeholder="add new todo here">
+         <input class="btn-primary" type="submit" value="add">
+       </form>
+     </div>
+     <hr>
+     Previous: <a href="index.html">The Basics</a> | Next: <a href="index-3.html">Wire up a Backend</a>
+   </div>
+   </body>
+ </html>
